@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  
+  xxx:
+    build:
+      context: ./XXX
+    container_name: sqlredisflask
+    depends_on: [redis,mysql]
+    links:
+      - "redis:redis"
+      - "mysql:mysql"
+    ports: 
+      - "5000:5000"
+    networks:
+      - oumanet
+
+
+  redis:
+    image: redis:4.0.11-alpine
+    container_name: redis
+    networks:
+      - oumanet
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: "sqlredis"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "125test"
+      MYSQL_ROOT_PASSWORD: "125test"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  
+    ports:
+      - "3308:3306"
+    networks:
+      - oumanet
+
+networks:
+  oumanet:
+    name: oumanet
+

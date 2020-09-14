@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Errors Generated</title>
+	<script type="text/javascript">
+		history.pushState(null,null,location.href);
+		window.onpopstate = function(){
+			history.go(1);
+			};
+	</script>
+	<!-- -->
+	<!-- -->
+	<!-- -->
+	<!-- {{err}} -->
+	<!-- -->
+	<!-- -->
+	
+
+
+</head>
+
+
+<body>
+		<h1>Apparently something went wrong ...</h1>
+		<h3>Please check the generated error below and try again </h3><br><br><br>
+		<textarea id="err" rows="3" cols="70" readonly> {{Current_error}} </textarea>
+</body>
+</html>
